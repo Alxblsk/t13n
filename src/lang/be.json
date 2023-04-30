@@ -3,7 +3,7 @@
     "б": { "type": "C", "defaultValue": "b" },
     "в": { "type": "C", "defaultValue": "v" },
     "г": { "type": "C", "defaultValue": "h", "altValues" : [
-       { "value": "g", "firstLetter": true, "nextLettersInclude": ["ан", "он", "уз"] },
+       { "value": "g", "firstLetter": true, "nextLettersInclude": ["ан", "он", "узік"] },
        { "value": "g", "prevLettersInclude": ["з", "дз", "дж"] }
     ]}, 
     "д": { "type": "V", "defaultValue": "d" },
@@ -25,7 +25,7 @@
     "у": { "type": "V", "defaultValue": "u" },
     "ў": { "type": "C", "defaultValue": "u" },
     "ф": { "type": "C", "defaultValue": "f" },
-    "х": { "type": "C", "defaultValue": "h" },
+    "х": { "type": "C", "defaultValue": "kh" },
     "ц": { "type": "C", "defaultValue": "c" },
     "ч": { "type": "C", "defaultValue": "ch" },
     "ш": { "type": "C", "defaultValue": "sh" },

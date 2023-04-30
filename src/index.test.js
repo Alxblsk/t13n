@@ -1,16 +1,32 @@
 import { assert } from 'chai';
 import { latinize } from './index.js';
 
-const words = {
-    "піяўка": "piiauka",
-    "варажун": "varazhun",
-    "гузік": "huzik",
-}
-
 describe('Single Word Assetion', function () {
-    it('should transliterate words correctly', function () {
-        Object.keys(words).map((word) => {
+    let words = {
+        "піяўка": "piiauka",
+        "варажун": "varazhun",
+        "голад": "holad",
+        "холад": "kholad",
+        "гузік": "guzik",
+        "ганак": "ganak",
+        "гонт": "gont",
+        "мазгі": "mazgi",
+        "мязга": "miazga"
+    }
+    
+    Object.keys(words).map((word) => {
+        it(`should transliterate the word ${word} correctly`, function () {
             assert.equal(latinize(word), words[word]);
+        });
+    });
+
+    let wrong_words = {
+        "мaзгi": "m_zg_"
+    }
+
+    Object.keys(wrong_words).map((word) => {
+        it(`should not transliterate the word ${word} (wrong letters)`, function () {
+            assert.equal(latinize(word), wrong_words[word]);
         });
     });
 });

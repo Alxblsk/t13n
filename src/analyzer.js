@@ -1,3 +1,5 @@
+import { pick } from './pick.js';
+
 export class Analyzer {
     #words = [];
 
@@ -45,6 +47,11 @@ class LetterAnalyzer {
     }
 
     analyze(word, index, lib) {
+        if (!(word[index] in lib)) {
+            console.warn(`Symbol ${word[index]} (code ${word[index].charCodeAt(0)}) is not available in the library`);
+            return {};
+        }
+
         const isFirstLetter = index === 0;
         const isLastLetter = index === word.length - 1;
 
@@ -58,11 +65,11 @@ class LetterAnalyzer {
             isFirstLetter,
             isLastLetter,
             
-            isPrevVowel: hasPrevLetter && lib[prevLetter].type === "V",
-            isNextVowel: hasNextLetter && lib[nextLetter].type === "V",
+            isPrevVowel: hasPrevLetter && lib[prevLetter]?.type === "V",
+            isNextVowel: hasNextLetter && lib[nextLetter]?.type === "V",
 
-            isPrevConsonant: hasPrevLetter && lib[prevLetter].type === "C",
-            isPrevConsonant: hasNextLetter && lib[nextLetter].type === "C"
+            isPrevConsonant: hasPrevLetter && lib[prevLetter]?.type === "C",
+            isPrevConsonant: hasNextLetter && lib[nextLetter]?.type === "C"
         }
     }
 
@@ -76,5 +83,15 @@ class LetterAnalyzer {
 
     get rules() {
         return this.#rules;
+    }
+
+    rulesCount(rules) {
+        const matchedRules = pick(rules, [
+            'firstLetter', 
+            'prevLettersInclude',
+            'nextLettersInclude'
+        ])
+
+        return Object.keys(matchedRules).length;
     }
 }
