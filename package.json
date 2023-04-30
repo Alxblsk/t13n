@@ -1,7 +1,7 @@
 {
     "name": "t13n",
     "type": "module",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "source": "src/index.js",
     "exports": {
         "require": "./dist/index.cjs",
