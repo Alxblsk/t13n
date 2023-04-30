@@ -1,6 +1,6 @@
 ## T13N: Transliteration Made Right
 
-Welcome the the T13N - a transliteration library for Cyrilic languages.
+Welcome the the T13N - a transliteration library for Cyrilic languages written for Javascript applications.
 
 ### What is it for?
 
