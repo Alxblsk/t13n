@@ -1,9 +1,11 @@
+import { compileLib } from './compile.js';
 import { pick } from './pick.js';
 
 export class Analyzer {
     #words = [];
 
-    constructor(line, lib) {
+    constructor(line, dictionary) {
+        const lib = compileLib(dictionary);
         line.normalize().split(" ").forEach((word) => {
             this.#words.push(new WordAnalyzer(word, lib))
         })
@@ -61,16 +63,20 @@ class LetterAnalyzer {
         const hasPrevLetter = !isFirstLetter && !!prevLetter;
         const hasNextLetter = !isLastLetter && !!nextLetter;
 
+        const isUpperCase = lib[word[index]]?.isUpperCase === true;
+
         return {
             isFirstLetter,
             isLastLetter,
+
+            isUpperCase,
             
             isPrevVowel: hasPrevLetter && lib[prevLetter]?.type === "V",
             isNextVowel: hasNextLetter && lib[nextLetter]?.type === "V",
 
             isPrevConsonant: hasPrevLetter && lib[prevLetter]?.type === "C",
             isPrevConsonant: hasNextLetter && lib[nextLetter]?.type === "C"
-        }
+        };
     }
 
     get properties() {

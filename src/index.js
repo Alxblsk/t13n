@@ -1,8 +1,9 @@
 import { Analyzer } from './analyzer.js';
+import { restoreCase } from './restore.js';
 import be from './lang/be.json' assert {
     type: 'json',
     integrity: 'sha384-ABC123'
-  };;
+  };
 
 
 export function latinize(line) {
@@ -54,15 +55,14 @@ export function latinize(line) {
                     }
 
                     if (countToMatch === rulesMatched) {
-                        result.push(altRules.value);
+                        result.push(restoreCase(altRules.value, properties));
                         return false;
                     }
 
                 }
-                // more logic here for alternative sounds befor applying a default one
             }
     
-            result.push(rules.defaultValue);
+            result.push(restoreCase(rules.defaultValue, properties));
         })
     })
 

@@ -1,9 +1,10 @@
 import { assert } from 'chai';
 import { latinize } from './index.js';
 
-describe('Single Word Assetion', function () {
+// https://ru.wikipedia.org/wiki/Романизация_белорусского_текста_BGN/PCGN
+describe('BE / Single Word Assetion (BGN/PCGN)', function () {
     let words = {
-        "піяўка": "piiauka",
+        "піяўка": "piyawka",
         "варажун": "varazhun",
         "голад": "holad",
         "холад": "kholad",
@@ -11,7 +12,7 @@ describe('Single Word Assetion', function () {
         "ганак": "ganak",
         "гонт": "gont",
         "мазгі": "mazgi",
-        "мязга": "miazga"
+        "мязга": "myazga"
     }
     
     Object.keys(words).map((word) => {
@@ -27,6 +28,19 @@ describe('Single Word Assetion', function () {
     Object.keys(wrong_words).map((word) => {
         it(`should not transliterate the word ${word} (wrong letters)`, function () {
             assert.equal(latinize(word), wrong_words[word]);
+        });
+    });
+
+    let places = {
+        "Антон": "Anton",
+        "Вілейка": "Vilyeyka",
+        "Брэст": "Brest",
+        "Дубна": "Dubna"
+    }
+
+    Object.keys(places).map((place) => {
+        it(`should transliterate the name ${place} correctly`, function () {
+            assert.equal(latinize(place), places[place]);
         });
     });
 });
