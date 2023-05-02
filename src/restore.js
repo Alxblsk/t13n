@@ -1,6 +1,9 @@
-export function restoreCase(letter = '', props = {}) {
-    if (props.isUpperCase === true) {
-        return letter.toUpperCase()
+export function restoreCase(letter, props = {}) {
+    if (letter && props.isUpperCase === true) {
+        const [first, ...rest] = letter.split('');
+        
+        return [first.toUpperCase(), ...rest].join('');
     }
+
     return letter;
 }
