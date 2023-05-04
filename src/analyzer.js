@@ -1,12 +1,14 @@
-import { compileLib } from './compile.js';
+import { compileDictionary } from './compile.js';
 import { pick } from './pick.js';
 
 export class Analyzer {
     #words = [];
 
-    constructor(line, dictionary) {
-        const lib = compileLib(dictionary);
-        line.normalize().split(" ").forEach((word) => {
+    constructor(line, dictionary, settings) {
+        const safeOnly = settings.safeOnly === true;
+        const lib = compileDictionary(dictionary, safeOnly);
+        
+        line.normalize().split(/\s/).forEach((word) => {
             this.#words.push(new WordAnalyzer(word, lib))
         })
     }

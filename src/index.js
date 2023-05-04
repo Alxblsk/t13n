@@ -1,30 +1,28 @@
 import { Analyzer } from './analyzer.js';
 import { restoreCase } from './restore.js';
+import { DEFAULT_FALLBACK, DEFAULT_SPACE } from './defaults.js';
 import be from './lang/be.json' assert {
     type: 'json',
     integrity: 'sha384-ABC123'
-  };
+};
 
 
-export function latinize(line) {
+export function latinize(line, settings = {}) {
     if (!line) {
         return "";
     }
 
-    const analyzed = new Analyzer(line, be);
+    const analyzed = new Analyzer(line, be, settings);
 
-    const result = [];
-
-    analyzed.words.forEach((word) => {
-        word.letters.forEach((letter, lIndex) => {
+    const result = analyzed.words.map((word) => {
+        const latinSymbols = word.letters.map((letter, lIndex) => {
             const rules = letter.rules;
             const properties = letter.properties;
 
             if (rules === undefined) {
-                result.push("_");
-                return false;
+                return "_";
             }
-    
+
             if (Array.isArray(rules?.altValues)) {
                 for (let altRules of rules.altValues) {
                     const countToMatch = letter.rulesCount(altRules);
@@ -43,7 +41,7 @@ export function latinize(line) {
                             rulesMatched++;
                         }
                     }
-                    
+
                     if (altRules.prevLettersInclude) {
                         const hasMatch = altRules.prevLettersInclude.some(part => {
                             return word.value.endsWith(part, lIndex);
@@ -55,16 +53,17 @@ export function latinize(line) {
                     }
 
                     if (countToMatch === rulesMatched) {
-                        result.push(restoreCase(altRules.value, properties));
-                        return false;
+                        return restoreCase(altRules.value, properties);
                     }
 
                 }
             }
-    
-            result.push(restoreCase(rules.defaultValue, properties));
+
+            return restoreCase(rules.defaultValue, properties);
         })
+
+        return latinSymbols.join("");
     })
 
-    return result.join("");
+    return result.join(settings.safeOnly ? DEFAULT_FALLBACK : DEFAULT_SPACE);
 }

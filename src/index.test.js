@@ -12,7 +12,8 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         "ганак": "ganak",
         "гонт": "gont",
         "мазгі": "mazgi",
-        "мязга": "myazga"
+        "мязга": "myazga",
+        "надвор’е": "nadvor''ye"
     }
     
     Object.keys(words).map((word) => {
@@ -117,4 +118,26 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
             assert.equal(latinize(place), places[place]);
         });
     });
+
+    let sentenses = {
+        "Гэта быў цяжкі год.": "Heta byw tsyazhki hod.",
+        "Папярэдні год быў прасцейшы!": "Papyaredni hod byw prastsyeyshy!",
+    }
+
+    Object.keys(sentenses).map((sentense) => {
+        it(`should transliterate the sentense ${sentense} correctly`, function () {
+            assert.equal(latinize(sentense), sentenses[sentense]);
+        });
+    });
+
+    let urlSlugs = {
+        "Чаму на тэлефоне з'явіўся сімвал #": "Chamu_na_telyefonye_z_yaviwsya_simval__"
+    }
+
+    Object.keys(urlSlugs).map((slug) => {
+        it(`should transliterate the slug ${slug} correctly`, function () {
+            assert.equal(latinize(slug, { safeOnly: true }), urlSlugs[slug]);
+        });
+    });
+    
 });
