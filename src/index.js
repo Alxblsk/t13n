@@ -1,10 +1,7 @@
 import { Analyzer } from './analyzer.js';
 import { restoreCase } from './restore.js';
 import { DEFAULT_FALLBACK, DEFAULT_SPACE } from './defaults.js';
-import be from './lang/be.json' assert {
-    type: 'json',
-    integrity: 'sha384-ABC123'
-};
+import be from './lang/be.js';
 
 
 export function latinize(line, settings = {}) {

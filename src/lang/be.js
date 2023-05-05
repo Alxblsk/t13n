@@ -1,4 +1,4 @@
-{
+const dictionary = {
     "а": { "type": "V", "defaultValue": "a", "upper": "А" },
     "б": { "type": "C", "defaultValue": "b", "upper": "Б" },
     "в": { "type": "C", "defaultValue": "v", "upper": "В" },
@@ -63,3 +63,5 @@
     "a-z": {"type": "R", "ignore": true },
     "A-Z": {"type": "R", "ignore": true }
 }
+
+export default dictionary;
