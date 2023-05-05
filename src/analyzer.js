@@ -25,8 +25,8 @@ class WordAnalyzer {
     constructor(word, lib) {
         this.#val = word;
         
-        word.split("").forEach((letter, index, word) => {
-            this.#letters.push(new LetterAnalyzer(word, index, lib))
+        Array.from(word).forEach((letter, index, all) => {
+            this.#letters.push(new LetterAnalyzer(all, index, lib))
         })
     }
 
@@ -52,7 +52,7 @@ class LetterAnalyzer {
 
     analyze(word, index, lib) {
         if (!(word[index] in lib)) {
-            console.warn(`Symbol ${word[index]} (code ${word[index].charCodeAt(0)}) is not available in the library`);
+            console.warn(`Symbol ${word[index]} (code ${word[index].codePointAt(0)}) is not available in the library`);
             return {};
         }
 

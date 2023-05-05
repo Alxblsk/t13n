@@ -23,7 +23,8 @@ Implementation is split on so-called "phases" for better prioritization.
   - [x] Define a set of flags calculated for each letter for better context;g
   - [x] Define alternative variations for some letters that require it (like 'г');
   - [x] Support the most basic in-between-words separators (dash, underscore) for URL creation support and resolve "similar" symbols ("’" into "'");
-  - [ ] Ignore already available latin symbols and digits;
+  - [x] Ignore already available latin symbols and digits;
+  - [ ] Pack everything as v0.1
   
 #### Phase One: Other Belarusian-To-Latin variations ("Latinka", ICAO, ISO 9)
   - [ ] Reorganize code to support other variations of one language;

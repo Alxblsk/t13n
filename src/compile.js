@@ -1,4 +1,4 @@
-import { DEFAULT_FALLBACK } from "./defaults.js";
+import { DEFAULT_FALLBACK, DEFAULT_RANGE_SEPARATOR } from "./defaults.js";
 
 function getValue(symbol, dictionary, forceSafeValue) {
     const { ignore, unsafe, fallback, defaultValue }  = dictionary[symbol];
@@ -24,8 +24,24 @@ export function compileDictionary(dictionary, forceSafeValue) {
         if (!dictionary[symbol]) {
             return acc;
         }
-        const settings = dictionary[symbol];
-        const { upper, symbolicLink, ignore, unsafe, fallback, ...restSettings}  = settings;
+
+        const { upper, symbolicLink, ignore, unsafe, fallback, ...restSettings} = dictionary[symbol];
+
+        if (restSettings.type === 'R') {
+            const [from, to] = symbol.split(DEFAULT_RANGE_SEPARATOR);
+
+            if (!!from && !!to) {
+                const charFrom = from.codePointAt();
+                const charTo = to.codePointAt();
+
+                for (let rangeChar = charFrom; rangeChar <= charTo; rangeChar++) {
+                    const rangeSymbol = String.fromCodePoint(rangeChar);
+                    acc[rangeSymbol] = { defaultValue: rangeSymbol };
+                }
+            }
+
+            return acc;
+        }
 
         if (ignore) {
             acc[symbol] = { ...restSettings, defaultValue: getValue(symbol, dictionary, forceSafeValue) };

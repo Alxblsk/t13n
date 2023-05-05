@@ -23,7 +23,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
     });
 
     let wrong_words = {
-        "мaзгi": "m_zg_"
+        "Том 🤝 Джэры": "Tom _ Dzhery"
     }
 
     Object.keys(wrong_words).map((word) => {
@@ -137,6 +137,17 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
     Object.keys(urlSlugs).map((slug) => {
         it(`should transliterate the slug ${slug} correctly`, function () {
             assert.equal(latinize(slug, { safeOnly: true }), urlSlugs[slug]);
+        });
+    });
+
+    let excludedRanges = {
+        'Мне казалі, што нумар яго кватэры - 46.': "Mnye kazali, shto numar yaho kvatery - 46.",
+        "Матуля заўсёды спявала мне \"I will allways love you\"": "Matulya zawsyody spyavala mnye \"I will allways love you\""
+    }
+
+    Object.keys(excludedRanges).map((rangeItem) => {
+        it(`should ignore ranges of symbols in ${rangeItem} correctly`, function () {
+            assert.equal(latinize(rangeItem), excludedRanges[rangeItem]);
         });
     });
     
