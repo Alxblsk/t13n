@@ -1,162 +1,174 @@
-import { assert } from 'chai';
-import { latinize } from './index';
-import { Ruleset } from './types';
+import { assert } from "chai";
+import { latinize } from "./index";
+import { Ruleset } from "./types";
 
 type TestCases = Record<string, string>;
 
 // https://ru.wikipedia.org/wiki/Романизация_белорусского_текста_BGN/PCGN
-describe('BE / Single Word Assetion (BGN/PCGN)', function () {
-    let words: TestCases = {
-        "піяўка": "piyawka",
-        "варажун": "varazhun",
-        "голад": "holad",
-        "холад": "kholad",
-        "гузік": "guzik",
-        "ганак": "ganak",
-        "гонт": "gont",
-        "мазгі": "mazgi",
-        "мязга": "myazga",
-        "надвор’е": "nadvor''ye"
-    }
-    
-    Object.keys(words).map((word) => {
-        it(`should transliterate the word ${word} correctly`, function () {
-            assert.equal(latinize(word), words[word]);
-        });
+describe("BE / Single Word Assetion (BGN/PCGN)", function () {
+  let words: TestCases = {
+    піяўка: "piyawka",
+    варажун: "varazhun",
+    голад: "holad",
+    холад: "kholad",
+    гузік: "guzik",
+    ганак: "ganak",
+    гонт: "gont",
+    мазгі: "mazgi",
+    мязга: "myazga",
+    "надвор’е": "nadvor''ye",
+  };
+
+  Object.keys(words).map((word) => {
+    it(`should transliterate the word ${word} correctly`, function () {
+      assert.equal(latinize(word), words[word]);
     });
+  });
 
-    let wrong_words: TestCases = {
-        "Том 🤝 Джэры": "Tom _ Dzhery"
-    }
+  let wrong_words: TestCases = {
+    "Том 🤝 Джэры": "Tom _ Dzhery",
+  };
 
-    Object.keys(wrong_words).map((word) => {
-        it(`should not transliterate the word ${word} (wrong letters)`, function () {
-            assert.equal(latinize(word), wrong_words[word]);
-        });
+  Object.keys(wrong_words).map((word) => {
+    it(`should not transliterate the word ${word} (wrong letters)`, function () {
+      assert.equal(latinize(word), wrong_words[word]);
     });
+  });
 
-    let places: TestCases = {
-        "Антон": "Anton",
-        "Вілейка": "Vilyeyka",
-        "Брэст": "Brest",
-        "Дубна": "Dubna",
-        "Віцебск": "Vitsyebsk",
-        "Асіповічы": "Asipovichy",
-        "Гродна": "Hrodna",
-        "Брагін": "Brahin",
-        "Добруш": "Dobrush",
-        "Ліда": "Lida",
-        "Гомель": "Homyel'",
-        "Беліца": "Byelitsa",
-        "Ёдкавічы": "Yodkavichy",
-        "Нёман": "Nyoman",
-        "Жлобін": "Zhlobin",
-        "Ружаны": "Ruzhany",
-        "Зоя": "Zoya",
-        "князь": "knyaz'",
-        "Ігнат": "Ihnat",
-        "Мінск": "Minsk",
-        "Йосель": "Yosyel'",
-        "Койданава": "Koydanava",
-        "Крапіўна": "Krapiwna",
-        "Менск": "Myensk",
-        "Лаўна": "Lawna",
-        "Лёсік": "Lyosik",
-        "Купала": "Kupala",
-        "Міхал": "Mikhal",
-        "Вільня": "Vil'nya",
-        "Лепель": "Lyepyel'",
-        "Магілёў": "Mahilyow",
-        "Няміга": "Nyamiha",
-        "Наваградак": "Navahradak",
-        "Баранавічы": "Baranavichy",
-        "Орша": "Orsha",
-        "Востраў": "Vostraw",
-        "Пінск": "Pinsk",
-        "Дняпро": "Dnyapro",
-        "Рагачоў": "Rahachow",
-        "Сураж": "Surazh",
-        "Смаляны": "Smalyany",
-        "Арэса": "Aresa",
-        "Рось": "Ros'",
-        "Талочын": "Talochyn",
-        "Масты": "Masty",
-        "Уладзімір": "Uladzimir",
-        "Бабруйск": "Babruysk",
-        "Быхаў": "Bykhaw",
-        "Воўпа": "Vowpa",
-        "Іўе": "Iwye",
-        "Фолюш": "Folyush",
-        "фортка": "fortka",
-        "Хатынь": "Khatyn'",
-        "Ганцавічы": "Hantsavichy",
-        "Стоўбцы": "Stowbtsy",
-        "цьмяны": "ts'myany",
-        "мясцовы": "myastsovy",
-        "Астравец": "Astravyets",
-        "Прыпяць": "Prypyats'",
-        "Чэрыкаў": "Cherykaw",
-        "Шчара": "Shchara",
-        "Нарач": "Narach",
-        "Шклоў": "Shklow",
-        "Ашмяны": "Ashmyany",
-        "Ыттык-Кёль": "Yttyk-Kyol'",
-        "Кобрын": "Kobryn",
-        "Солы": "Soly",
-        "Копысь": "Kopys'",
-        "рунь": "run'",
-        "Эйсманты": "Eysmanty",
-        "Крэва": "Kreva",
-        "Юры": "Yury",
-        "уюн": "uyun",
-        "Язэп": "Yazep",
-        "Івянец": "Ivyanyets",
-        "з'езд": "z''yezd",
-        "Беларусь": "Byelarus'"
-    }
+  let places: TestCases = {
+    Антон: "Anton",
+    Вілейка: "Vilyeyka",
+    Брэст: "Brest",
+    Дубна: "Dubna",
+    Віцебск: "Vitsyebsk",
+    Асіповічы: "Asipovichy",
+    Гродна: "Hrodna",
+    Брагін: "Brahin",
+    Добруш: "Dobrush",
+    Ліда: "Lida",
+    Гомель: "Homyel'",
+    Беліца: "Byelitsa",
+    Ёдкавічы: "Yodkavichy",
+    Нёман: "Nyoman",
+    Жлобін: "Zhlobin",
+    Ружаны: "Ruzhany",
+    Зоя: "Zoya",
+    князь: "knyaz'",
+    Ігнат: "Ihnat",
+    Мінск: "Minsk",
+    Йосель: "Yosyel'",
+    Койданава: "Koydanava",
+    Крапіўна: "Krapiwna",
+    Менск: "Myensk",
+    Лаўна: "Lawna",
+    Лёсік: "Lyosik",
+    Купала: "Kupala",
+    Міхал: "Mikhal",
+    Вільня: "Vil'nya",
+    Лепель: "Lyepyel'",
+    Магілёў: "Mahilyow",
+    Няміга: "Nyamiha",
+    Наваградак: "Navahradak",
+    Баранавічы: "Baranavichy",
+    Орша: "Orsha",
+    Востраў: "Vostraw",
+    Пінск: "Pinsk",
+    Дняпро: "Dnyapro",
+    Рагачоў: "Rahachow",
+    Сураж: "Surazh",
+    Смаляны: "Smalyany",
+    Арэса: "Aresa",
+    Рось: "Ros'",
+    Талочын: "Talochyn",
+    Масты: "Masty",
+    Уладзімір: "Uladzimir",
+    Бабруйск: "Babruysk",
+    Быхаў: "Bykhaw",
+    Воўпа: "Vowpa",
+    Іўе: "Iwye",
+    Фолюш: "Folyush",
+    фортка: "fortka",
+    Хатынь: "Khatyn'",
+    Ганцавічы: "Hantsavichy",
+    Стоўбцы: "Stowbtsy",
+    цьмяны: "ts'myany",
+    мясцовы: "myastsovy",
+    Астравец: "Astravyets",
+    Прыпяць: "Prypyats'",
+    Чэрыкаў: "Cherykaw",
+    Шчара: "Shchara",
+    Нарач: "Narach",
+    Шклоў: "Shklow",
+    Ашмяны: "Ashmyany",
+    "Ыттык-Кёль": "Yttyk-Kyol'",
+    Кобрын: "Kobryn",
+    Солы: "Soly",
+    Копысь: "Kopys'",
+    рунь: "run'",
+    Эйсманты: "Eysmanty",
+    Крэва: "Kreva",
+    Юры: "Yury",
+    уюн: "uyun",
+    Язэп: "Yazep",
+    Івянец: "Ivyanyets",
+    "з'езд": "z''yezd",
+    Беларусь: "Byelarus'",
+  };
 
-    Object.keys(places).map((place) => {
-        it(`should transliterate the name ${place} correctly`, function () {
-            assert.equal(latinize(place), places[place]);
-        });
+  Object.keys(places).map((place) => {
+    it(`should transliterate the name ${place} correctly`, function () {
+      assert.equal(latinize(place), places[place]);
     });
+  });
 
-    let sentenses: TestCases = {
-        "Гэта быў цяжкі год.": "Heta byw tsyazhki hod.",
-        "Папярэдні год быў прасцейшы!": "Papyaredni hod byw prastsyeyshy!",
-    }
+  let sentenses: TestCases = {
+    "Гэта быў цяжкі год.": "Heta byw tsyazhki hod.",
+    "Папярэдні год быў прасцейшы!": "Papyaredni hod byw prastsyeyshy!",
+  };
 
-    Object.keys(sentenses).map((sentense) => {
-        it(`should transliterate the sentense ${sentense} correctly`, function () {
-            assert.equal(latinize(sentense), sentenses[sentense]);
-        });
+  Object.keys(sentenses).map((sentense) => {
+    it(`should transliterate the sentense ${sentense} correctly`, function () {
+      assert.equal(latinize(sentense), sentenses[sentense]);
     });
+  });
 
-    let urlSlugs: TestCases = {
-        "Чаму на тэлефоне з'явіўся сімвал #": "Chamu_na_telyefonye_z_yaviwsya_simval__"
-    }
+  let urlSlugs: TestCases = {
+    "Чаму на тэлефоне з'явіўся сімвал #":
+      "Chamu_na_telyefonye_z_yaviwsya_simval__",
+  };
 
-    Object.keys(urlSlugs).map((slug) => {
-        it(`should transliterate the slug ${slug} correctly`, function () {
-            assert.equal(latinize(slug, { language: 'be', style: 'BGN-PCGN', safeOnly: true }), urlSlugs[slug]);
-        });
+  Object.keys(urlSlugs).map((slug) => {
+    it(`should transliterate the slug ${slug} correctly`, function () {
+      assert.equal(
+        latinize(slug, { language: "be", style: "BGN-PCGN", safeOnly: true }),
+        urlSlugs[slug]
+      );
     });
+  });
 
-    let excludedRanges: TestCases = {
-        'Мне казалі, што нумар яго кватэры - 46.': "Mnye kazali, shto numar yaho kvatery - 46.",
-        "Матуля заўсёды спявала мне \"I will allways love you\"": "Matulya zawsyody spyavala mnye \"I will allways love you\""
-    }
+  let excludedRanges: TestCases = {
+    "Мне казалі, што нумар яго кватэры - 46.":
+      "Mnye kazali, shto numar yaho kvatery - 46.",
+    'Матуля заўсёды спявала мне "I will allways love you"':
+      'Matulya zawsyody spyavala mnye "I will allways love you"',
+  };
 
-    Object.keys(excludedRanges).map((rangeItem) => {
-        it(`should ignore ranges of symbols in ${rangeItem} correctly`, function () {
-            assert.equal(latinize(rangeItem), excludedRanges[rangeItem]);
-        });
+  Object.keys(excludedRanges).map((rangeItem) => {
+    it(`should ignore ranges of symbols in ${rangeItem} correctly`, function () {
+      assert.equal(latinize(rangeItem), excludedRanges[rangeItem]);
     });
+  });
 
-    it('should pass extra rule correctly', function() {
-        const extraRuleset: Ruleset = { "ь": { type: "L", sound: "C", defaultValue: ""} };
-        const result = latinize('Беларусь', { language: 'be', style: 'BGN-PCGN', safeOnly: false, extraRuleset })
-        assert.equal(result, 'Byelarus');
-    })
-    
+  it("should pass extra rule correctly", function () {
+    const extraRuleset: Ruleset = {
+      ь: { type: "L", sound: "C", defaultValue: "" },
+    };
+    const result = latinize("Беларусь", {
+      language: "be",
+      style: "BGN-PCGN",
+      safeOnly: false,
+      extraRuleset,
+    });
+    assert.equal(result, "Byelarus");
+  });
 });

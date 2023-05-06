@@ -1,39 +1,47 @@
 {
-    "name": "t13n",
-    "description": "Transliteration library from Cyrilic languages",
-    "type": "module",
-    "version": "0.1.1",
-    "source": "src/index.ts",
-    "exports": {
-        "require": "./dist/index.cjs",
-        "default": "./dist/index.modern.js"
-    },
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.module.js",
-    "unpkg": "./dist/index.umd.js",
-    "scripts": {
-        "build": "microbundle",
-        "pub": "npm publish --access public",
-        "dev": "microbundle watch",
-        "test": "ts-mocha --file \"./src/index.test.ts\""
-    },
-    "devDependencies": {
-        "@types/chai": "^4.3.5",
-        "@types/mocha": "^10.0.1",
-        "chai": "^4.3.7",
-        "microbundle": "^0.15.1",
-        "ts-mocha": "^10.0.0",
-        "typescript": "^5.0.4"
-    },
-    "keywords": [
-        "transliteration",
-        "belarusian",
-        "Cyrilic",
-        "Latin",
-        "Latinize",
-        "t13n"
-    ],
-    "homepage": "https://github.com/Alxblsk/t13n#readme",
-    "license": "MIT",
-    "sideEffects": false
+  "name": "t13n",
+  "description": "Transliteration library from Cyrilic languages",
+  "type": "module",
+  "version": "0.1.2",
+  "source": "src/index.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "pub": "npm publish --access public",
+    "dev": "microbundle watch",
+    "test": "ts-mocha --file \"./src/index.test.ts\"",
+    "prettify": "npx prettier --write ./src",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "microbundle": "^0.15.1",
+    "prettier": "2.8.8",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.0.4"
+  },
+  "keywords": [
+    "transliteration",
+    "belarusian",
+    "Cyrilic",
+    "Latin",
+    "Latinize",
+    "t13n"
+  ],
+  "homepage": "https://github.com/Alxblsk/t13n#readme",
+  "license": "MIT",
+  "sideEffects": false,
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
 }

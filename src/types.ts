@@ -1,69 +1,80 @@
 enum SoundType {
-    V = "VOWEL",
-    C = "CONSONANT"
+  V = "VOWEL",
+  C = "CONSONANT",
 }
 
 enum RuleType {
-    L = "LETTER",
-    S = "SYMBOL",
-    R = "RANGE"
+  L = "LETTER",
+  S = "SYMBOL",
+  R = "RANGE",
 }
 
 export interface AltValueRule {
-    value: string;
-    firstLetter?: boolean;
-    prevLettersInclude?: string[];
-    nextLettersInclude?: string[];
+  value: string;
+  firstLetter?: boolean;
+  prevLettersInclude?: string[];
+  nextLettersInclude?: string[];
 }
 
-interface Rule {
-    type: string;
-    sound?: string;
-    defaultValue?: string;
-    upper?: string;
-    ignore?: boolean;
-    unsafe?: boolean;
-    fallback?: string;
-    symbolicLink?: string;
-    altValues?: AltValueRule[]
+interface RuleLetter {
+  type: string;
+  sound?: string;
+  defaultValue?: string;
+  upper?: string;
+  altValues?: AltValueRule[];
 }
+
+interface RuleSymbol {
+  type: string;
+  defaultValue?: string;
+  ignore?: boolean;
+  unsafe?: boolean;
+  fallback?: string;
+}
+
+interface RuleSymbolicLink {
+  type: string;
+  symbolicLink?: string;
+}
+
+interface Rule extends RuleLetter, RuleSymbol, RuleSymbolicLink {}
 
 export interface Ruleset {
-    [symbol: string]: Rule
+  [symbol: string]: Rule;
 }
 
 export interface DictionaryRecord {
-    defaultValue: string;
-    sound?: string;
-    isUpperCase?: boolean;
-    altValues?: AltValueRule[]
+  defaultValue: string;
+  sound?: string;
+  isUpperCase?: boolean;
+  altValues?: AltValueRule[];
 }
 
 export interface Dictionary {
-    [symbol: string]: DictionaryRecord
+  [symbol: string]: DictionaryRecord;
 }
 
 export interface ApplicationSettings {
-    language: string, 
-    style: string, 
-    safeOnly: boolean, 
-    extraRuleset?: Ruleset
+  language: string;
+  style: string;
+  safeOnly: boolean;
+  extraRuleset?: Ruleset;
 }
 
 export interface LetterProperties {
-    isFirstLetter: boolean;
-    isLastLetter: boolean,
-    isUpperCase: boolean;
-    isPrevVowel: boolean,
-    isNextVowel: boolean,
-    isPrevConsonant: boolean,
-    isNextConsonant: boolean
+  isFirstLetter: boolean;
+  isLastLetter: boolean;
+  isUpperCase: boolean;
+  isPrevVowel: boolean;
+  isNextVowel: boolean;
+  isPrevConsonant: boolean;
+  isNextConsonant: boolean;
 }
 
 export interface AnalyzerSettings {
-    safeOnly: boolean;
+  safeOnly: boolean;
 }
 
 export interface LanguagesAvailable {
-    [lang: string]: Ruleset
+  [lang: string]: Ruleset;
 }
