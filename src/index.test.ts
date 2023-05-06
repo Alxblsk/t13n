@@ -138,7 +138,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
 
     Object.keys(urlSlugs).map((slug) => {
         it(`should transliterate the slug ${slug} correctly`, function () {
-            assert.equal(latinize(slug, { safeOnly: true }), urlSlugs[slug]);
+            assert.equal(latinize(slug, { language: 'be', style: 'BGN-PCGN', safeOnly: true }), urlSlugs[slug]);
         });
     });
 
