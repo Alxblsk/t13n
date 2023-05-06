@@ -25,7 +25,7 @@ Implementation is split on so-called "phases" for better prioritization.
   - [x] Support the most basic in-between-words separators (dash, underscore) for URL creation support and resolve "similar" symbols ("’" into "'");
   - [x] Ignore already available latin symbols and digits;
   - [x] Extend configurations via settings;
-  - [ ] Pack everything as v0.1
+  - [x] Pack everything as v0.1
   
 #### Phase One: Other Belarusian-To-Latin variations ("Latinka", ICAO, ISO 9)
   - [ ] Switch to Typescript;
