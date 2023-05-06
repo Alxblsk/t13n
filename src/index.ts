@@ -1,17 +1,18 @@
-import { Analyzer } from './analyzer.js';
-import { restoreCase } from './restore.js';
-import { DEFAULT_FALLBACK, DEFAULT_SPACE } from './defaults.js';
+import { Analyzer } from './analyzer';
+import { restoreCase } from './restore';
+import { DEFAULT_FALLBACK, DEFAULT_SPACE } from './defaults';
 
-import common from './ruleset/common.js';
-import be_BGN from './ruleset/language/be_BGN-PCGN.js';
+import common from './ruleset/common.json';
+import be_BGN from './ruleset/language/be_BGN-PCGN.json';
+import { ApplicationSettings, LanguagesAvailable } from './types';
 
-const LANGUAGES = {
+const LANGUAGES: LanguagesAvailable = {
     'be_BGN-PCGN': be_BGN
 }
 
-const DEFAULTS = { language: 'be', style: 'BGN-PCGN', safeOnly: false, extraRuleset: {} };
+const DEFAULTS: ApplicationSettings = { language: 'be', style: 'BGN-PCGN', safeOnly: false, extraRuleset: {} };
 
-export function latinize(line, incomingSettings = {}) {
+export function latinize(line: string, incomingSettings: ApplicationSettings = DEFAULTS) {
     if (!line) {
         return "";
     }

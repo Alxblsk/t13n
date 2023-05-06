@@ -3,7 +3,7 @@
     "description": "Transliteration library from Cyrilic languages",
     "type": "module",
     "version": "0.1.0",
-    "source": "src/index.js",
+    "source": "src/index.ts",
     "exports": {
         "require": "./dist/index.cjs",
         "default": "./dist/index.modern.js"
@@ -15,14 +15,25 @@
         "build": "microbundle",
         "pub": "npm publish --access public",
         "dev": "microbundle watch",
-        "test": "mocha --file \"./src/index.test.js\""
+        "test": "ts-mocha --file \"./src/index.test.ts\""
     },
     "devDependencies": {
+        "@types/chai": "^4.3.5",
+        "@types/mocha": "^10.0.1",
         "chai": "^4.3.7",
         "microbundle": "^0.15.1",
-        "mocha": "^10.2.0"
+        "ts-mocha": "^10.0.0",
+        "typescript": "^5.0.4"
     },
-    "keywords": ["transliteration", "belarusian", "Cyrilic", "Latin", "Latinize", "t13n"],
+    "keywords": [
+        "transliteration",
+        "belarusian",
+        "Cyrilic",
+        "Latin",
+        "Latinize",
+        "t13n"
+    ],
     "homepage": "https://github.com/Alxblsk/t13n#readme",
-    "license": "MIT"
+    "license": "MIT",
+    "sideEffects": false
 }

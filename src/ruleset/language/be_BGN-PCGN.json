@@ -1,4 +1,4 @@
-const ruleset = {
+{
     "а": { "type": "L", "sound": "V", "defaultValue": "a", "upper": "А" },
     "б": { "type": "L", "sound": "C", "defaultValue": "b", "upper": "Б" },
     "в": { "type": "L", "sound": "C", "defaultValue": "v", "upper": "В" },
@@ -34,7 +34,5 @@ const ruleset = {
     "э": { "type": "L", "sound": "V", "defaultValue": "e", "upper": "Э" },
     "ю": { "type": "L", "sound": "V", "defaultValue": "yu", "upper": "Ю" },
     "я": { "type": "L", "sound": "V", "defaultValue": "ya", "upper": "Я" },
-    "'": { "type": "S", "defaultValue": "''", "unsafe": true },
+    "'": { "type": "S", "defaultValue": "''", "unsafe": true }
 }
-
-export default ruleset;

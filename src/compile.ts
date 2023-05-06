@@ -1,7 +1,8 @@
-import { DEFAULT_FALLBACK, DEFAULT_RANGE_SEPARATOR } from "./defaults.js";
+import { DEFAULT_FALLBACK, DEFAULT_RANGE_SEPARATOR } from "./defaults";
+import { Dictionary, Ruleset } from "./types";
 
-function getValue(symbol, ruleset, forceSafeValue) {
-    const { ignore, unsafe, fallback, defaultValue }  = ruleset[symbol];
+function getValue(symbol: string, ruleset: Ruleset, forceSafeValue: boolean) {
+    const { ignore, unsafe, fallback, defaultValue = '' }  = ruleset[symbol];
 
     if (unsafe && forceSafeValue) {
         return fallback || DEFAULT_FALLBACK;
@@ -14,13 +15,15 @@ function getValue(symbol, ruleset, forceSafeValue) {
     return defaultValue;
 }
 
-export function compileDictionary(ruleset, forceSafeValue) {
+export function compileDictionary(ruleset: Ruleset, forceSafeValue: boolean = false) {
     if (!ruleset) {
         console.warn('No library object passed');
         return {};
     }
 
-    return Object.keys(ruleset).reduce(function(acc, symbol) {
+    let dictionary: Dictionary = {};
+
+    dictionary = Object.keys(ruleset).reduce(function(acc, symbol) {
         if (!ruleset[symbol]) {
             return acc;
         }
@@ -31,8 +34,8 @@ export function compileDictionary(ruleset, forceSafeValue) {
             const [from, to] = symbol.split(DEFAULT_RANGE_SEPARATOR);
 
             if (!!from && !!to) {
-                const charFrom = from.codePointAt();
-                const charTo = to.codePointAt();
+                const charFrom = from.codePointAt(0) || Number.MAX_SAFE_INTEGER;
+                const charTo = to.codePointAt(0) || -1;
 
                 for (let rangeChar = charFrom; rangeChar <= charTo; rangeChar++) {
                     const rangeSymbol = String.fromCodePoint(rangeChar);
@@ -44,20 +47,22 @@ export function compileDictionary(ruleset, forceSafeValue) {
         }
 
         if (ignore) {
-            acc[symbol] = { ...restSettings, defaultValue: getValue(symbol, ruleset, forceSafeValue) };
+            acc[symbol] = { defaultValue: getValue(symbol, ruleset, forceSafeValue) };
             return acc;
         } 
         
         if (symbolicLink && ruleset[symbolicLink]) {
-            acc[symbol] = ruleset[symbolicLink];
+            acc[symbol] = { defaultValue: '', ...ruleset[symbolicLink] };
             return acc;
         } 
         
         if (upper) {
-            acc[upper] = { ...restSettings, isUpperCase: true };
+            acc[upper] = { isUpperCase: true, defaultValue: getValue(symbol, ruleset, forceSafeValue) };
         } 
 
         acc[symbol] = { ...restSettings, isUpperCase: false, defaultValue: getValue(symbol, ruleset, forceSafeValue) };
         return acc;
-    }, {});
+    }, dictionary);
+
+    return dictionary;
 }

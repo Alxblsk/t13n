@@ -1,9 +1,12 @@
 import { assert } from 'chai';
-import { latinize } from './index.js';
+import { latinize } from './index';
+import { Ruleset } from './types';
+
+type TestCases = Record<string, string>;
 
 // https://ru.wikipedia.org/wiki/Романизация_белорусского_текста_BGN/PCGN
 describe('BE / Single Word Assetion (BGN/PCGN)', function () {
-    let words = {
+    let words: TestCases = {
         "піяўка": "piyawka",
         "варажун": "varazhun",
         "голад": "holad",
@@ -22,7 +25,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         });
     });
 
-    let wrong_words = {
+    let wrong_words: TestCases = {
         "Том 🤝 Джэры": "Tom _ Dzhery"
     }
 
@@ -32,7 +35,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         });
     });
 
-    let places = {
+    let places: TestCases = {
         "Антон": "Anton",
         "Вілейка": "Vilyeyka",
         "Брэст": "Brest",
@@ -60,7 +63,6 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         "Лаўна": "Lawna",
         "Лёсік": "Lyosik",
         "Купала": "Kupala",
-        "Вілейка": "Vilyeyka",
         "Міхал": "Mikhal",
         "Вільня": "Vil'nya",
         "Лепель": "Lyepyel'",
@@ -87,7 +89,6 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         "Фолюш": "Folyush",
         "фортка": "fortka",
         "Хатынь": "Khatyn'",
-        "Быхаў": "Bykhaw",
         "Ганцавічы": "Hantsavichy",
         "Стоўбцы": "Stowbtsy",
         "цьмяны": "ts'myany",
@@ -120,7 +121,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         });
     });
 
-    let sentenses = {
+    let sentenses: TestCases = {
         "Гэта быў цяжкі год.": "Heta byw tsyazhki hod.",
         "Папярэдні год быў прасцейшы!": "Papyaredni hod byw prastsyeyshy!",
     }
@@ -131,7 +132,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         });
     });
 
-    let urlSlugs = {
+    let urlSlugs: TestCases = {
         "Чаму на тэлефоне з'явіўся сімвал #": "Chamu_na_telyefonye_z_yaviwsya_simval__"
     }
 
@@ -141,7 +142,7 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         });
     });
 
-    let excludedRanges = {
+    let excludedRanges: TestCases = {
         'Мне казалі, што нумар яго кватэры - 46.': "Mnye kazali, shto numar yaho kvatery - 46.",
         "Матуля заўсёды спявала мне \"I will allways love you\"": "Matulya zawsyody spyavala mnye \"I will allways love you\""
     }
@@ -153,7 +154,8 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
     });
 
     it('should pass extra rule correctly', function() {
-        const result = latinize('Беларусь', { extraRuleset: { "ь": { "sound": "C", "defaultValue": ""} } })
+        const extraRuleset: Ruleset = { "ь": { type: "L", sound: "C", defaultValue: ""} };
+        const result = latinize('Беларусь', { language: 'be', style: 'BGN-PCGN', safeOnly: false, extraRuleset })
         assert.equal(result, 'Byelarus');
     })
     

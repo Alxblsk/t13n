@@ -1,4 +1,4 @@
-const ruleset = {
+{
     "'": { "type": "S", "ignore": true, "unsafe": true },
     "’": { "type": "S", "symbolicLink": "'" },
     "`": { "type": "S", "symbolicLink": "'" },
@@ -28,5 +28,3 @@ const ruleset = {
     "a-z": {"type": "R", "ignore": true },
     "A-Z": {"type": "R", "ignore": true }
 }
-
-export default ruleset;
