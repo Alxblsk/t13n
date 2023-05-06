@@ -1,0 +1,32 @@
+const ruleset = {
+    "'": { "type": "S", "ignore": true, "unsafe": true },
+    "’": { "type": "S", "symbolicLink": "'" },
+    "`": { "type": "S", "symbolicLink": "'" },
+    "-": { "type": "S", "ignore": true },
+    "–": { "type": "S", "ignore": true, "unsafe": true, "fallback": "-" },
+    "—": { "type": "S", "ignore": true, "unsafe": true, "fallback": "-" },
+    "~": { "type": "S", "ignore": true },
+    ",": { "type": "S", "ignore": true },
+    ".": { "type": "S", "ignore": true },
+    "?": { "type": "S", "ignore": true, "unsafe": true },
+    "!": { "type": "S", "ignore": true },
+    ":": { "type": "S", "ignore": true },
+    ";": { "type": "S", "ignore": true },
+    "*": { "type": "S", "ignore": true },
+    "#": { "type": "S", "ignore": true, "unsafe": true },
+    "@": { "type": "S", "ignore": true },
+    "%": { "type": "S", "ignore": true, "unsafe": true },
+    "&": { "type": "S", "ignore": true, "unsafe": true },
+    "+": { "type": "S", "ignore": true, "unsafe": true },
+    "=": { "type": "S", "ignore": true, "unsafe": true },
+    "/": { "type": "S", "ignore": true, "unsafe": true },
+    "\"": { "type": "S", "ignore": true, "unsafe": true },
+    "\\": { "type": "S", "ignore": true, "unsafe": true },
+    "(": { "type": "S", "ignore": true },
+    ")": { "type": "S", "ignore": true },
+    "0-9": {"type": "R", "ignore": true },
+    "a-z": {"type": "R", "ignore": true },
+    "A-Z": {"type": "R", "ignore": true }
+}
+
+export default ruleset;

@@ -12,7 +12,7 @@ Transliteration can be made for different purposes, such as:
 
 ### Status 
 
-`IN DEVELOPMENT`
+`IN DEVELOPMENT` / `PHASE 0 PREVIEW`
 
 ### Implementation Checklist
 
@@ -24,9 +24,12 @@ Implementation is split on so-called "phases" for better prioritization.
   - [x] Define alternative variations for some letters that require it (like 'г');
   - [x] Support the most basic in-between-words separators (dash, underscore) for URL creation support and resolve "similar" symbols ("’" into "'");
   - [x] Ignore already available latin symbols and digits;
+  - [x] Extend configurations via settings;
   - [ ] Pack everything as v0.1
   
 #### Phase One: Other Belarusian-To-Latin variations ("Latinka", ICAO, ISO 9)
+  - [ ] Switch to Typescript;
+  - [ ] Schematize a language JSON;
   - [ ] Reorganize code to support other variations of one language;
   - [ ] Add Belarusian Latin alphabet ("Łacinka");
   - [ ] Add ICAO standard;
@@ -40,3 +43,10 @@ Implementation is split on so-called "phases" for better prioritization.
  - [ ] Add Russian alphabet and transliteration rules.
 
 _(Other languages to be supported later on)_
+
+## Ruleset & Dictionary
+
+Every transformation rule is explicit and described in a so-called `Ruleset` It's a compilation of rule that explains transliteration behavior of the script. It may be compact and descriptive at the same time, depending on needs.
+
+A result of `Ruleset` compilation is a `Dictionary`, that's used for pre-processing analysis and later transliteration.
+

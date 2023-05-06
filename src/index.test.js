@@ -110,7 +110,8 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
         "уюн": "uyun",
         "Язэп": "Yazep",
         "Івянец": "Ivyanyets",
-        "з'езд": "z''yezd"
+        "з'езд": "z''yezd",
+        "Беларусь": "Byelarus'"
     }
 
     Object.keys(places).map((place) => {
@@ -150,5 +151,10 @@ describe('BE / Single Word Assetion (BGN/PCGN)', function () {
             assert.equal(latinize(rangeItem), excludedRanges[rangeItem]);
         });
     });
+
+    it('should pass extra rule correctly', function() {
+        const result = latinize('Беларусь', { extraRuleset: { "ь": { "sound": "C", "defaultValue": ""} } })
+        assert.equal(result, 'Byelarus');
+    })
     
 });

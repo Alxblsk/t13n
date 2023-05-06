@@ -73,11 +73,11 @@ class LetterAnalyzer {
 
             isUpperCase,
             
-            isPrevVowel: hasPrevLetter && lib[prevLetter]?.type === "V",
-            isNextVowel: hasNextLetter && lib[nextLetter]?.type === "V",
+            isPrevVowel: hasPrevLetter && lib[prevLetter]?.sound === "V",
+            isNextVowel: hasNextLetter && lib[nextLetter]?.sound === "V",
 
-            isPrevConsonant: hasPrevLetter && lib[prevLetter]?.type === "C",
-            isPrevConsonant: hasNextLetter && lib[nextLetter]?.type === "C"
+            isPrevConsonant: hasPrevLetter && lib[prevLetter]?.sound === "C",
+            isPrevConsonant: hasNextLetter && lib[nextLetter]?.sound === "C"
         };
     }
 
