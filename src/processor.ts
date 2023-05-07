@@ -1,12 +1,6 @@
 import { restoreCase } from "./restore";
 import { DEFAULT_FALLBACK, DEFAULT_SPACE } from "./defaults";
-import {
-  LetterProperties,
-  AltValueRule,
-  IAnalyzer,
-  IWordAnalyzer,
-  ILetterAnalyzer,
-} from "./types";
+import { LetterProperties, AltValueRule, IAnalyzer, IWordAnalyzer, ILetterAnalyzer } from "./types";
 
 export class Processor {
   private _analyzedText: IAnalyzer;
@@ -56,11 +50,7 @@ export class Processor {
   checkAltRule(
     altRules: AltValueRule,
     properties: LetterProperties,
-    {
-      word,
-      letter,
-      lIndex,
-    }: { word: IWordAnalyzer; letter: ILetterAnalyzer; lIndex: number }
+    { word, letter, lIndex }: { word: IWordAnalyzer; letter: ILetterAnalyzer; lIndex: number }
   ) {
     const countToMatch = letter.rulesCount(altRules);
     let rulesMatched = 0;

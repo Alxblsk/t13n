@@ -16,10 +16,7 @@ const DEFAULTS: ApplicationSettings = {
   extraRuleset: {},
 };
 
-export function latinize(
-  line: string,
-  incomingSettings: ApplicationSettings = DEFAULTS
-) {
+export function latinize(line: string, incomingSettings: ApplicationSettings = DEFAULTS) {
   if (!line) {
     return "";
   }

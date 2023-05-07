@@ -1,1 +1,5 @@
-{}
+{
+  "semi": true,
+  "quoteProps": "consistent",
+  "arrowParens": "always"
+}

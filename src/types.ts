@@ -93,10 +93,6 @@ export interface ILetterAnalyzer {
   rules: any;
   properties: any;
 
-  analyze(
-    word: string[],
-    index: number,
-    dictionary: Dictionary
-  ): LetterProperties;
+  analyze(word: string[], index: number, dictionary: Dictionary): LetterProperties;
   rulesCount(rules: AltValueRule): number;
 }

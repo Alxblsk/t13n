@@ -15,10 +15,7 @@ function getValue(symbol: string, ruleset: Ruleset, forceSafeValue: boolean) {
   return defaultValue;
 }
 
-export function compileDictionary(
-  ruleset: Ruleset,
-  forceSafeValue: boolean = false
-) {
+export function compileDictionary(ruleset: Ruleset, forceSafeValue: boolean = false) {
   if (!ruleset) {
     console.warn("No library object passed");
     return {};
@@ -31,8 +28,7 @@ export function compileDictionary(
       return acc;
     }
 
-    const { upper, symbolicLink, ignore, unsafe, fallback, ...restSettings } =
-      ruleset[symbol];
+    const { upper, symbolicLink, ignore, unsafe, fallback, ...restSettings } = ruleset[symbol];
 
     if (restSettings.type === "R") {
       const [from, to] = symbol.split(DEFAULT_RANGE_SEPARATOR);

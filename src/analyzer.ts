@@ -64,16 +64,10 @@ class LetterAnalyzer implements ILetterAnalyzer {
     this._props = this.analyze(word, index, dictionary);
   }
 
-  analyze(
-    word: string[],
-    index: number,
-    dictionary: Dictionary
-  ): LetterProperties {
+  analyze(word: string[], index: number, dictionary: Dictionary): LetterProperties {
     if (!(word[index] in dictionary)) {
       console.warn(
-        `Symbol ${word[index]} (code ${word[index].codePointAt(
-          0
-        )}) is not available in the library`
+        `Symbol ${word[index]} (code ${word[index].codePointAt(0)}) is not available in the library`
       );
       return {
         isFirstLetter: false,
@@ -124,11 +118,7 @@ class LetterAnalyzer implements ILetterAnalyzer {
   }
 
   rulesCount(rules: AltValueRule) {
-    const matchedRules = pick(rules, [
-      "firstLetter",
-      "prevLettersInclude",
-      "nextLettersInclude",
-    ]);
+    const matchedRules = pick(rules, ["firstLetter", "prevLettersInclude", "nextLettersInclude"]);
 
     return Object.keys(matchedRules).length;
   }
