@@ -54,3 +54,11 @@ _(Other languages to be supported later on)_
 Every transformation rule is explicit and described in a so-called `Ruleset` It's a compilation of rule that explains transliteration behavior of the script. It may be compact and descriptive at the same time, depending on needs.
 
 A result of `Ruleset` compilation is a `Dictionary`, that's used for pre-processing analysis and later transliteration.
+
+There are three types of Rules which can possibly be used:
+
+| Rule Type | Description                                                                                                                                |
+| :-------: | ------------------------------------------------------------------------------------------------------------------------------------------ |
+|     L     | Describing a rule for a letter that should be altered on a Latin manner                                                                    |
+|     S     | Every special symbol that should be kept as-is or transformed / corrected                                                                  |
+|     R     | There are some common sets of characters (like latin letters or digits) that described one after one and should be labeled in the same way |

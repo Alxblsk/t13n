@@ -78,3 +78,25 @@ export interface AnalyzerSettings {
 export interface LanguagesAvailable {
   [lang: string]: Ruleset;
 }
+
+export interface IAnalyzer {
+  words: IWordAnalyzer[];
+}
+
+export interface IWordAnalyzer {
+  letters: ILetterAnalyzer[];
+  value: string;
+}
+
+export interface ILetterAnalyzer {
+  value: string;
+  rules: any;
+  properties: any;
+
+  analyze(
+    word: string[],
+    index: number,
+    dictionary: Dictionary
+  ): LetterProperties;
+  rulesCount(rules: AltValueRule): number;
+}

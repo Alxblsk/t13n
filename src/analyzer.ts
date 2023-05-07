@@ -7,10 +7,13 @@ import {
   Ruleset,
   DictionaryRecord,
   AltValueRule,
+  IAnalyzer,
+  IWordAnalyzer,
+  ILetterAnalyzer,
 } from "./types";
 
-export class Analyzer {
-  #words: WordAnalyzer[] = [];
+export class Analyzer implements IAnalyzer {
+  private _words: WordAnalyzer[] = [];
 
   constructor(line: string, ruleset: Ruleset, settings: AnalyzerSettings) {
     const safeOnly = settings.safeOnly === true;
@@ -20,45 +23,45 @@ export class Analyzer {
       .normalize()
       .split(/\s/)
       .forEach((word) => {
-        this.#words.push(new WordAnalyzer(word, dictionary));
+        this._words.push(new WordAnalyzer(word, dictionary));
       });
   }
 
   get words() {
-    return this.#words;
+    return this._words;
   }
 }
 
-class WordAnalyzer {
-  #letters: LetterAnalyzer[] = [];
-  #val = "";
+class WordAnalyzer implements IWordAnalyzer {
+  private _letters: LetterAnalyzer[] = [];
+  private _val = "";
 
   constructor(word: string, dictionary: Dictionary) {
-    this.#val = word;
+    this._val = word;
 
     Array.from(word).forEach((letter, index, all) => {
-      this.#letters.push(new LetterAnalyzer(all, index, dictionary));
+      this._letters.push(new LetterAnalyzer(all, index, dictionary));
     });
   }
 
   get letters() {
-    return this.#letters;
+    return this._letters;
   }
 
   get value() {
-    return this.#val;
+    return this._val;
   }
 }
 
-class LetterAnalyzer {
-  #props: LetterProperties;
-  #rules: DictionaryRecord;
-  #val: string = "";
+class LetterAnalyzer implements ILetterAnalyzer {
+  private _props: LetterProperties;
+  private _rules: DictionaryRecord;
+  private _val: string = "";
 
   constructor(word: string[], index: number, dictionary: Dictionary) {
-    this.#val = word[index];
-    this.#rules = dictionary[this.#val];
-    this.#props = this.analyze(word, index, dictionary);
+    this._val = word[index];
+    this._rules = dictionary[this._val];
+    this._props = this.analyze(word, index, dictionary);
   }
 
   analyze(
@@ -109,15 +112,15 @@ class LetterAnalyzer {
   }
 
   get properties() {
-    return this.#props;
+    return this._props;
   }
 
   get value() {
-    return this.#val;
+    return this._val;
   }
 
   get rules() {
-    return this.#rules;
+    return this._rules;
   }
 
   rulesCount(rules: AltValueRule) {

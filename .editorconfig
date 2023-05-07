@@ -1,0 +1,5 @@
+max_line_length = 100
+
+[src/**.ts]
+indent_style = space
+indent_size = 2
