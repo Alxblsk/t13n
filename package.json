@@ -2,7 +2,7 @@
   "name": "t13n",
   "description": "Transliteration library from Cyrilic languages",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "source": "src/index.ts",
   "exports": {
     "require": "./dist/index.cjs",
@@ -13,7 +13,7 @@
   "unpkg": "./dist/index.umd.js",
   "scripts": {
     "build": "microbundle",
-    "pub": "npm publish --access public",
+    "pub": "npm run build && npm publish --access public",
     "dev": "microbundle watch",
     "test": "ts-mocha --file \"./src/index.test.ts\"",
     "prettify": "npx prettier --write ./src",
