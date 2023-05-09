@@ -33,10 +33,10 @@ Implementation is split on so-called "phases" for better prioritization.
 
 - [x] Switch to Typescript;
 - [x] Schematize a language JSON;
-- [ ] Reorganize code to support other variations of one language;
-- [ ] Add Belarusian Latin alphabet ("Łacinka");
+- [x] Reorganize code to support other variations of one language;
+- [x] Add Belarusian Latin alphabet ("Łacinka");
 - [ ] Add ICAO standard;
-- [ ] Add ISO 9 standard;
+- [x] Add ISO 9 standard;
 
 #### Phase Two: Ukrainian-To-Latin
 

@@ -59,6 +59,10 @@ export class Processor {
       rulesMatched++;
     }
 
+    if (altRules.lastLetter && properties.isLastLetter) {
+      rulesMatched++;
+    }
+
     if (altRules.nextLettersInclude) {
       const hasMatch = altRules.nextLettersInclude.some((part: string) => {
         return word.value.startsWith(part, lIndex + 1);

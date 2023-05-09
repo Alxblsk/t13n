@@ -12,6 +12,7 @@ enum RuleType {
 export interface AltValueRule {
   value: string;
   firstLetter?: boolean;
+  lastLetter?: boolean;
   prevLettersInclude?: string[];
   nextLettersInclude?: string[];
 }

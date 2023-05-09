@@ -1,0 +1,163 @@
+{
+  "а": { "type": "L", "sound": "V", "defaultValue": "a", "upper": "А" },
+  "б": { "type": "L", "sound": "C", "defaultValue": "b", "upper": "Б" },
+  "в": { "type": "L", "sound": "C", "defaultValue": "v", "upper": "В" },
+  "г": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "h",
+    "upper": "Г",
+    "altValues": [
+      {
+        "value": "g",
+        "firstLetter": true,
+        "nextLettersInclude": ["анак", "анк", "он", "узік"]
+      },
+      { "value": "g", "prevLettersInclude": ["з", "дз", "дж"] }
+    ]
+  },
+  "д": { "type": "L", "sound": "V", "defaultValue": "d", "upper": "Д" },
+  "е": {
+    "type": "L",
+    "sound": "V",
+    "defaultValue": "ie",
+    "upper": "Е",
+    "altValues": [
+      {
+        "value": "je",
+        "firstLetter": true
+      },
+      {
+        "value": "je",
+        "prevLettersInclude": ["а", "о", "у", "ы", "э", "е", "ё", "ю", "я", "і", "ў", "ь", "'"]
+      }
+    ]
+  },
+  "ё": {
+    "type": "L",
+    "sound": "V",
+    "defaultValue": "io",
+    "upper": "Ё",
+    "altValues": [
+      {
+        "value": "jo",
+        "firstLetter": true
+      },
+      {
+        "value": "jo",
+        "prevLettersInclude": ["а", "о", "у", "ы", "э", "е", "ё", "ю", "я", "і", "ў", "ь", "'"]
+      }
+    ]
+  },
+  "ж": { "type": "L", "sound": "C", "defaultValue": "ž", "upper": "Ж" },
+  "з": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "z",
+    "upper": "З",
+    "altValues": [
+      {
+        "value": "ź",
+        "nextLettersInclude": ["ь"]
+      }
+    ]
+  },
+  "і": { "type": "L", "sound": "V", "defaultValue": "i", "upper": "І" },
+  "й": { "type": "L", "sound": "C", "defaultValue": "j", "upper": "Й" },
+  "к": { "type": "L", "sound": "C", "defaultValue": "k", "upper": "К" },
+  "л": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "l",
+    "upper": "Л",
+    "altValues": [
+      {
+        "value": "ĺ",
+        "nextLettersInclude": ["ь"]
+      }
+    ]
+  },
+  "м": { "type": "L", "sound": "C", "defaultValue": "m", "upper": "М" },
+  "н": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "n",
+    "upper": "Н",
+    "altValues": [
+      {
+        "value": "ń",
+        "nextLettersInclude": ["ь"]
+      }
+    ]
+  },
+  "о": { "type": "L", "sound": "V", "defaultValue": "o", "upper": "О" },
+  "п": { "type": "L", "sound": "C", "defaultValue": "p", "upper": "П" },
+  "р": { "type": "L", "sound": "C", "defaultValue": "r", "upper": "Р" },
+  "с": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "s",
+    "upper": "С",
+    "altValues": [
+      {
+        "value": "ś",
+        "nextLettersInclude": ["ь"]
+      }
+    ]
+  },
+  "т": { "type": "L", "sound": "C", "defaultValue": "t", "upper": "Т" },
+  "у": { "type": "L", "sound": "V", "defaultValue": "u", "upper": "У" },
+  "ў": { "type": "L", "sound": "C", "defaultValue": "ŭ", "upper": "Ў" },
+  "ф": { "type": "L", "sound": "C", "defaultValue": "f", "upper": "Ф" },
+  "х": { "type": "L", "sound": "C", "defaultValue": "ch", "upper": "Х" },
+  "ц": {
+    "type": "L",
+    "sound": "C",
+    "defaultValue": "c",
+    "upper": "Ц",
+    "altValues": [
+      {
+        "value": "ć",
+        "nextLettersInclude": ["ь"]
+      }
+    ]
+  },
+  "ч": { "type": "L", "sound": "C", "defaultValue": "č", "upper": "Ч" },
+  "ш": { "type": "L", "sound": "C", "defaultValue": "š", "upper": "Ш" },
+  "ы": { "type": "L", "sound": "V", "defaultValue": "y", "upper": "Ы" },
+  "ь": { "type": "L", "sound": "C", "defaultValue": "", "upper": "Ь" },
+  "э": { "type": "L", "sound": "V", "defaultValue": "e", "upper": "Э" },
+  "ю": {
+    "type": "L",
+    "sound": "V",
+    "defaultValue": "iu",
+    "upper": "Ю",
+    "altValues": [
+      {
+        "value": "ju",
+        "firstLetter": true
+      },
+      {
+        "value": "ju",
+        "prevLettersInclude": ["а", "о", "у", "ы", "э", "е", "ё", "ю", "я", "і", "ў", "ь", "'"]
+      }
+    ]
+  },
+  "я": {
+    "type": "L",
+    "sound": "V",
+    "defaultValue": "ia",
+    "upper": "Я",
+    "altValues": [
+      {
+        "value": "ja",
+        "firstLetter": true
+      },
+      {
+        "value": "ja",
+        "prevLettersInclude": ["а", "о", "у", "ы", "э", "е", "ё", "ю", "я", "і", "ў", "ь", "'"]
+      }
+    ]
+  },
+  "'": { "type": "S", "defaultValue": "" }
+}
