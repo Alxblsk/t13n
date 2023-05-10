@@ -1,7 +1,6 @@
 import { compileDictionary } from "./compile";
 import { pick } from "./pick";
 import {
-  AnalyzerSettings,
   Dictionary,
   LetterProperties,
   Ruleset,
@@ -15,9 +14,8 @@ import {
 export class Analyzer implements IAnalyzer {
   private _words: WordAnalyzer[] = [];
 
-  constructor(line: string, ruleset: Ruleset, settings: AnalyzerSettings) {
-    const safeOnly = settings.safeOnly === true;
-    const dictionary = compileDictionary(ruleset, safeOnly);
+  constructor(line: string, ruleset: Ruleset) {
+    const dictionary = compileDictionary(ruleset);
 
     line
       .normalize()

@@ -6,7 +6,7 @@ type TestCases = Record<string, string>;
 
 // https://ru.wikipedia.org/wiki/Романизация_белорусского_текста_BGN/PCGN
 describe("Language: BE", function () {
-  xdescribe("Style: BGN/PCGN", function () {
+  describe("Style: BGN/PCGN", function () {
     describe("Single Word Assetions", function () {
       let words: TestCases = {
         "піяўка": "piyawka",
@@ -215,6 +215,23 @@ describe("Language: BE", function () {
       Object.keys(sentenses).map((sentense) => {
         it(`should transliterate the sentense ${sentense} correctly`, function () {
           assert.equal(latinize(sentense, settings), sentenses[sentense]);
+        });
+      });
+    });
+
+    describe("Safe symbols only", function () {
+      let urlSlugs: TestCases = {
+        "беларускі народ": "bielaruski_narod",
+        "залежнасьці": "zaleznasci",
+        "дзяржаўныя зьвязі": "dziarzaunyja_zviazi",
+      };
+
+      Object.keys(urlSlugs).map((slug) => {
+        it(`should transliterate the slug ${slug} correctly`, function () {
+          assert.equal(
+            latinize(slug, { language: "be", style: "lacinka", safeOnly: true }),
+            urlSlugs[slug]
+          );
         });
       });
     });

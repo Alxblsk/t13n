@@ -37,7 +37,7 @@ export function latinize(line: string, incomingSettings: ApplicationSettings = D
   }
 
   const ruleset = { ...common, ...desiredRuleset, ...settings.extraRuleset };
-  const analyzed = new Analyzer(line, ruleset, settings);
+  const analyzed = new Analyzer(line, ruleset);
 
   return new Processor(analyzed, settings.safeOnly).process();
 }

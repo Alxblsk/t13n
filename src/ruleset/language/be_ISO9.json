@@ -1,12 +1,11 @@
 {
-  "а": { "type": "L", "sound": "V", "defaultValue": "a", "upper": "А" },
-  "б": { "type": "L", "sound": "C", "defaultValue": "b", "upper": "Б" },
-  "в": { "type": "L", "sound": "C", "defaultValue": "v", "upper": "В" },
+  "а": { "type": "L", "sound": "V", "defaultValue": "a" },
+  "б": { "type": "L", "sound": "C", "defaultValue": "b" },
+  "в": { "type": "L", "sound": "C", "defaultValue": "v" },
   "г": {
     "type": "L",
     "sound": "C",
     "defaultValue": "h",
-    "upper": "Г",
     "altValues": [
       {
         "value": "g",
@@ -16,12 +15,11 @@
       { "value": "g", "prevLettersInclude": ["з", "дз", "дж"] }
     ]
   },
-  "д": { "type": "L", "sound": "V", "defaultValue": "d", "upper": "Д" },
+  "д": { "type": "L", "sound": "V", "defaultValue": "d" },
   "е": {
     "type": "L",
     "sound": "V",
     "defaultValue": "ie",
-    "upper": "Е",
     "altValues": [
       {
         "value": "je",
@@ -37,7 +35,6 @@
     "type": "L",
     "sound": "V",
     "defaultValue": "io",
-    "upper": "Ё",
     "altValues": [
       {
         "value": "jo",
@@ -49,12 +46,11 @@
       }
     ]
   },
-  "ж": { "type": "L", "sound": "C", "defaultValue": "ž", "upper": "Ж" },
+  "ж": { "type": "L", "sound": "C", "defaultValue": "ž" },
   "з": {
     "type": "L",
     "sound": "C",
     "defaultValue": "z",
-    "upper": "З",
     "altValues": [
       {
         "value": "ź",
@@ -62,14 +58,13 @@
       }
     ]
   },
-  "і": { "type": "L", "sound": "V", "defaultValue": "i", "upper": "І" },
-  "й": { "type": "L", "sound": "C", "defaultValue": "j", "upper": "Й" },
-  "к": { "type": "L", "sound": "C", "defaultValue": "k", "upper": "К" },
+  "і": { "type": "L", "sound": "V", "defaultValue": "i" },
+  "й": { "type": "L", "sound": "C", "defaultValue": "j" },
+  "к": { "type": "L", "sound": "C", "defaultValue": "k" },
   "л": {
     "type": "L",
     "sound": "C",
     "defaultValue": "l",
-    "upper": "Л",
     "altValues": [
       {
         "value": "ĺ",
@@ -77,12 +72,11 @@
       }
     ]
   },
-  "м": { "type": "L", "sound": "C", "defaultValue": "m", "upper": "М" },
+  "м": { "type": "L", "sound": "C", "defaultValue": "m" },
   "н": {
     "type": "L",
     "sound": "C",
     "defaultValue": "n",
-    "upper": "Н",
     "altValues": [
       {
         "value": "ń",
@@ -90,14 +84,13 @@
       }
     ]
   },
-  "о": { "type": "L", "sound": "V", "defaultValue": "o", "upper": "О" },
-  "п": { "type": "L", "sound": "C", "defaultValue": "p", "upper": "П" },
-  "р": { "type": "L", "sound": "C", "defaultValue": "r", "upper": "Р" },
+  "о": { "type": "L", "sound": "V", "defaultValue": "o" },
+  "п": { "type": "L", "sound": "C", "defaultValue": "p" },
+  "р": { "type": "L", "sound": "C", "defaultValue": "r" },
   "с": {
     "type": "L",
     "sound": "C",
     "defaultValue": "s",
-    "upper": "С",
     "altValues": [
       {
         "value": "ś",
@@ -105,16 +98,15 @@
       }
     ]
   },
-  "т": { "type": "L", "sound": "C", "defaultValue": "t", "upper": "Т" },
-  "у": { "type": "L", "sound": "V", "defaultValue": "u", "upper": "У" },
-  "ў": { "type": "L", "sound": "C", "defaultValue": "ŭ", "upper": "Ў" },
-  "ф": { "type": "L", "sound": "C", "defaultValue": "f", "upper": "Ф" },
-  "х": { "type": "L", "sound": "C", "defaultValue": "ch", "upper": "Х" },
+  "т": { "type": "L", "sound": "C", "defaultValue": "t" },
+  "у": { "type": "L", "sound": "V", "defaultValue": "u" },
+  "ў": { "type": "L", "sound": "C", "defaultValue": "ŭ" },
+  "ф": { "type": "L", "sound": "C", "defaultValue": "f" },
+  "х": { "type": "L", "sound": "C", "defaultValue": "ch" },
   "ц": {
     "type": "L",
     "sound": "C",
     "defaultValue": "c",
-    "upper": "Ц",
     "altValues": [
       {
         "value": "ć",
@@ -122,16 +114,15 @@
       }
     ]
   },
-  "ч": { "type": "L", "sound": "C", "defaultValue": "č", "upper": "Ч" },
-  "ш": { "type": "L", "sound": "C", "defaultValue": "š", "upper": "Ш" },
-  "ы": { "type": "L", "sound": "V", "defaultValue": "y", "upper": "Ы" },
-  "ь": { "type": "L", "sound": "C", "defaultValue": "", "upper": "Ь" },
-  "э": { "type": "L", "sound": "V", "defaultValue": "e", "upper": "Э" },
+  "ч": { "type": "L", "sound": "C", "defaultValue": "č" },
+  "ш": { "type": "L", "sound": "C", "defaultValue": "š" },
+  "ы": { "type": "L", "sound": "V", "defaultValue": "y" },
+  "ь": { "type": "L", "sound": "C", "defaultValue": "" },
+  "э": { "type": "L", "sound": "V", "defaultValue": "e" },
   "ю": {
     "type": "L",
     "sound": "V",
     "defaultValue": "iu",
-    "upper": "Ю",
     "altValues": [
       {
         "value": "ju",
@@ -147,7 +138,6 @@
     "type": "L",
     "sound": "V",
     "defaultValue": "ia",
-    "upper": "Я",
     "altValues": [
       {
         "value": "ja",

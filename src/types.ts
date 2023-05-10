@@ -15,6 +15,8 @@ export interface AltValueRule {
   lastLetter?: boolean;
   prevLettersInclude?: string[];
   nextLettersInclude?: string[];
+  unsafe?: boolean;
+  fallback?: string;
 }
 
 interface RuleLetter {
@@ -23,6 +25,8 @@ interface RuleLetter {
   defaultValue?: string;
   upper?: string;
   altValues?: AltValueRule[];
+  unsafe?: boolean;
+  fallback?: string;
 }
 
 interface RuleSymbol {
@@ -70,10 +74,6 @@ export interface LetterProperties {
   isNextVowel: boolean;
   isPrevConsonant: boolean;
   isNextConsonant: boolean;
-}
-
-export interface AnalyzerSettings {
-  safeOnly: boolean;
 }
 
 export interface LanguagesAvailable {

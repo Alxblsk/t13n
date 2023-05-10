@@ -35,12 +35,20 @@ export class Processor {
             });
 
             if (isMatch) {
-              return restoreCase(altRules.value, properties);
+              const { unsafe, fallback } = altRules;
+              return restoreCase(altRules.value, properties, {
+                unsafe: this._safeJoin && !!unsafe,
+                fallback,
+              });
             }
           }
         }
 
-        return restoreCase(rules.defaultValue, properties);
+        const { unsafe, fallback } = rules;
+        return restoreCase(rules.defaultValue, properties, {
+          unsafe: this._safeJoin && !!unsafe,
+          fallback,
+        });
       });
 
       return latinSymbols.join("");
