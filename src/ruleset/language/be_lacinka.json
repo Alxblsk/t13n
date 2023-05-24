@@ -6,7 +6,6 @@
     "type": "L",
     "sound": "C",
     "defaultValue": "h",
-
     "altValues": [
       {
         "value": "g",
@@ -26,7 +25,6 @@
     "type": "L",
     "sound": "V",
     "defaultValue": "ie",
-
     "altValues": [
       {
         "value": "je",
@@ -67,7 +65,6 @@
     "type": "L",
     "sound": "C",
     "defaultValue": "z",
-
     "altValues": [
       {
         "value": "ź",
@@ -84,7 +81,6 @@
     "type": "L",
     "sound": "C",
     "defaultValue": "ł",
-
     "altValues": [
       {
         "value": "l",
@@ -103,7 +99,6 @@
     "type": "L",
     "sound": "C",
     "defaultValue": "s",
-
     "altValues": [
       {
         "value": "ś",
@@ -122,7 +117,6 @@
     "type": "L",
     "sound": "C",
     "defaultValue": "c",
-
     "altValues": [
       {
         "value": "ć",
@@ -141,7 +135,6 @@
     "type": "L",
     "sound": "V",
     "defaultValue": "iu",
-
     "altValues": [
       {
         "value": "ju",
@@ -161,7 +154,6 @@
     "type": "L",
     "sound": "V",
     "defaultValue": "ia",
-
     "altValues": [
       {
         "value": "ja",

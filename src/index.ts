@@ -4,14 +4,14 @@ import { Processor } from "./processor";
 import common from "./ruleset/common.json";
 import be_BGN from "./ruleset/language/be_BGN-PCGN.json";
 import be_LAC from "./ruleset/language/be_lacinka.json";
-import be_ISO from "./ruleset/language/be_ISO9.json";
+import be_ISA from "./ruleset/language/be_ISO9A.json";
 
 import { ApplicationSettings, LanguagesAvailable } from "./types";
 
 const LANGUAGES: LanguagesAvailable = {
   "be_BGN-PCGN": be_BGN,
   "be_lacinka": be_LAC,
-  "be_ISO9": be_ISO,
+  "be_ISO9A": be_ISA,
 };
 
 const DEFAULTS: ApplicationSettings = {

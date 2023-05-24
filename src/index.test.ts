@@ -237,36 +237,52 @@ describe("Language: BE", function () {
     });
   });
 
-  describe("Style: ISO 9", function () {
-    const settings = { language: "be", style: "ISO9", safeOnly: false };
+  describe("Style: ISO 9 - A", function () {
+    const settings = { language: "be", style: "ISO9A", safeOnly: false };
 
     describe("Sentenses", function () {
       let sentenses: TestCases = {
         "Цяпер мы, Рада Беларускай Народнай Рэспублікі":
-          "Ciapier my, Rada Bielaruskaj Narodnaj Respubliki",
+          "Câper my, Rada Belaruskaj Narodnaj Rèspublìkì",
         "ськідаем з роднага краю апошняе ярмо дзяржаўнай залежнасьці":
-          "śkidajem z rodnaha kraju apošniaje jarmo dziaržaŭnaj zaliežnaści",
+          "sʹkìdaem z rodnaga kraû apošnâe ârmo dzâržaǔnaj zaležnasʹcì",
         "якое гвалтам накінулі расейскія цары на наш вольны і незалежны край":
-          "jakoje hvaltam nakinuli rasiejskija cary na naš voĺny i niezaliežny kraj",
+          "âkoe gvaltam nakìnulì rasejskìâ cary na naš volʹny ì nezaležny kraj",
         "На моцы гэтага трацяць сілу ўсе старыя дзяржаўныя зьвязі":
-          "Na mocy hetaha traciać silu ŭsie staryja dziaržaŭnyja źviazi",
+          "Na mocy gètaga tracâcʹ sìlu ǔse staryâ dzâržaǔnyâ zʹvâzì",
         "якія далі магчымасьць чужому ўраду падпісаць і за Беларусь трактат у Берасьці":
-          "jakija dali mahčymaść čužomu ŭradu padpisać i za Bielaruś traktat u Bieraści",
+          "âkìâ dalì magčymasʹcʹ čužomu ǔradu padpìsacʹ ì za Belarusʹ traktat u Berasʹcì",
         "што забівае на сьмерць беларускі народ, дзелячы зямлю яго на часткі":
-          "što zabivaje na śmierć bielaruski narod, dzieliačy ziamliu jaho na častki",
+          "što zabìvae na sʹmercʹ belaruskì narod, dzelâčy zâmlû âgo na častkì",
         "Беларуская Народная Рэспубліка павінна абняць усе землі":
-          "Bielaruskaja Narodnaja Respublika pavinna abniać usie ziemli",
+          "Belaruskaâ Narodnaâ Rèspublìka pavìnna abnâcʹ use zemlì",
         "дзе жыве і мае лічбенную перавагу беларускі народ, а ласьне":
-          "dzie žyvie i maje ličbiennuju pieravahu bielaruski narod, a laśnie",
+          "dze žyve ì mae lìčbennuû peravagu belaruskì narod, a lasʹne",
         "Магілёўшчыну, беларускія часьці Меншчыны, Гродненшчыны (з Гродняй, Беластокам і інш.)":
-          "Mahilioŭščynu, bielaruskija čaści Mienščyny, Hrodnienščyny (z Hrodniaj, Bielastokam i inš.)",
+          "Magìlëǔščynu, belaruskìâ časʹcì Menščyny, Grodnenščyny (z Grodnâj, Belastokam ì ìnš.)",
         "Чарнігаўшчыны і сумежных часьцяў суседніх губэрняў, заселеных беларусамі":
-          "Čarnihaŭščyny i sumiežnych čaściaŭ susiednich huberniaŭ, zasielienych bielarusami",
+          "Čarnìgaǔščyny ì sumežnyh časʹcâǔ susednìh gubèrnâǔ, zaselenyh belarusamì",
       };
 
       Object.keys(sentenses).map((sentense) => {
         it(`should transliterate the sentense ${sentense} correctly`, function () {
           assert.equal(latinize(sentense, settings), sentenses[sentense]);
+        });
+      });
+    });
+
+    describe("URL slug", function () {
+      let urlSlugs: TestCases = {
+        "Беларусь": "Belarus",
+        "Чаму на тэлефоне з'явіўся сімвал #": "Chamu_na_telefone_z_yaviusya_simval__",
+      };
+
+      Object.keys(urlSlugs).map((slug) => {
+        it(`should transliterate the slug ${slug} correctly`, function () {
+          assert.equal(
+            latinize(slug, { language: "be", style: "ISO9A", safeOnly: true }),
+            urlSlugs[slug]
+          );
         });
       });
     });

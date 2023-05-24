@@ -7,9 +7,10 @@ interface WordSettings {
 }
 
 export function restoreCase(letter: string, props: LetterProperties, settings: WordSettings) {
-  const trueLetter = settings.unsafe ? settings.fallback || DEFAULT_FALLBACK : letter;
+  const fallback = settings.fallback !== undefined ? settings.fallback : DEFAULT_FALLBACK;
+  const trueLetter = settings.unsafe ? fallback : letter;
 
-  if (letter && props.isUpperCase === true) {
+  if (trueLetter && props.isUpperCase === true) {
     const [first, ...rest] = trueLetter.split("");
 
     return [first.toUpperCase(), ...rest].join("");
